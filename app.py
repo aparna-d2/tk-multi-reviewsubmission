@@ -17,6 +17,8 @@ import sgtk.templatekey
 import copy
 import os
 
+from sgtk.platform.engine import get_environment_from_context
+
 class MultiReviewSubmissionApp(sgtk.platform.Application):
     """
     Main Application class
@@ -37,6 +39,21 @@ class MultiReviewSubmissionApp(sgtk.platform.Application):
         Specifies that context changes are allowed.
         """
         return True
+
+    def change_context(self, new_context):
+        if new_context == self.context:
+            return
+
+        super(MultiReviewSubmissionApp, self).change_context(new_context)
+
+        # reset the context
+        self.context = new_context
+
+        # reset the environment
+        self.env = get_environment_from_context(self.sgtk, new_context)
+
+        # reset the app settings
+        self.settings = self.env.get_app_settings(self.engine.name, self.name)
 
     def render_and_submit(self, template, fields, first_frame, last_frame, sg_publishes, sg_task,
                           comment, thumbnail_path, progress_cb):
