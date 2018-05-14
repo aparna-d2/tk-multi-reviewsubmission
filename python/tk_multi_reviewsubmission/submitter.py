@@ -49,10 +49,8 @@ class Submitter(object):
             "sg_status_list": self.__app.get_setting("new_version_status"),
             "entity": ctx.entity,
             "sg_task": sg_task,
-            # Leaving these fields blank to enable correct rv playback
-            # and match LA shotgun
-            # "sg_first_frame": first_frame,
-            # "sg_last_frame": last_frame,
+            "sg_first_frame": first_frame,
+            "sg_last_frame": last_frame,
             "frame_count": (last_frame-first_frame+1),
             "frame_range": "%s-%s" % (first_frame, last_frame),
             "sg_frames_have_slate": False,
