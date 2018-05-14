@@ -60,7 +60,7 @@ class Submitter(object):
             "user": current_user,
             "description": comment,
             "sg_path_to_frames": path_to_frames,
-            "sg_movie_has_slate": True,
+            "sg_movie_has_slate": self.__app.get_setting("mov_has_slate"),
             "project": ctx.project,
         }
 

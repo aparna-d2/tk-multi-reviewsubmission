@@ -123,6 +123,11 @@ configuration:
         description: Template for python script executed by nuke subprocess.
         allows_empty: True
 
+    mov_has_slate:
+        type: bool
+        default_value: true
+        description: Set the "Movie has slate" property on the version entity.
+
 # the Shotgun fields that this app needs in order to operate correctly
 requires_shotgun_fields:
 
